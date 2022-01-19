@@ -1,0 +1,52 @@
+.auth_block{
+    display: grid;
+    grid-template-columns: 342px 3fr;
+    grid-gap: 40px;
+    margin-top: 117px;
+    height: 410px;
+}
+.auth_block img{
+    width: 100%;
+    height: 100%;
+}
+.form_block{
+    padding-top: 29px;
+}
+.registration .form_block{
+    padding-top: 0;
+}
+.registration .form_block h3{
+    margin-bottom: 40px;
+}
+.form_block h3{
+    color: #343434;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.form_block input{
+    display: block;
+    width: 90%;
+    margin-top: 53px;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 1px solid #343434;
+    outline: 0;
+    margin-bottom: 15px;
+}
+.form_block > input:last-child{
+    margin-bottom: 15px;
+}
+.registration .form_block input{
+    margin-top: 26px;
+}
+.form_block button{
+    background-color: #343434;
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+    border-radius: 3px;
+    height: 40px;
+    color: #EBE9E9;
+    cursor: pointer;
+}
