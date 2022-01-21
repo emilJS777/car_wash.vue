@@ -32,7 +32,9 @@ const auth = {
         }
     },
     getters: {
-        GET_PROFILE: state => state.PROFILE
+        GET_PROFILE(state){
+            return state.PROFILE
+        }
     }
 }
 

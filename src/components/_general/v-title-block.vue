@@ -14,7 +14,6 @@ export default {
 
 <style scoped>
 .title_block{
-  padding-left: 248px;
   padding-bottom: 11px;
   border-bottom: 1px solid#BABABA;
 }

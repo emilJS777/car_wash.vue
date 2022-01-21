@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login auth">
 
     <div class="auth_block">
       <form class="form_block" @submit="this.sendForm">

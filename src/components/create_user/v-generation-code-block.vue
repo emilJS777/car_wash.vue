@@ -1,5 +1,5 @@
 <template>
-  <div class="generation_code_block">
+  <div class="generation_code_block content_block">
     <div class="form_block">
       <div>
         <input type="text" placeholder="Ստանալ կոդը" :value="new_code" disabled>
@@ -51,12 +51,7 @@ export default {
 
 <style scoped>
 .generation_code_block{
-  background-color: #fbfbfb;
-  margin-left: 248px;
-  margin-right: 25px;
   margin-top: 16px;
-  border-radius: 3px;
-  box-shadow: 0px 0px 3px #BABABA;
   padding: 25px;
 }
 .form_block{

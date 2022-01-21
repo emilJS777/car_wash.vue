@@ -14,6 +14,9 @@ import signIn from "@/views/sign_in"
 import signUp from "@/views/sign_up"
 import home from "@/views/home"
 import createUser from "@/views/create_user";
+import engineers from "@/views/engineers";
+import companies from "@/views/companies";
+import owners from "@/views/owners"
 
 const router = new Router({
     mode: "history",
@@ -52,6 +55,36 @@ const router = new Router({
             path: '/create_user',
             name: 'create_user',
             component: createUser,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/engineers',
+            name: 'engineers',
+            component: engineers,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/companies',
+            name: 'companies',
+            component: companies,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/owners',
+            name: 'owners',
+            component: owners,
             meta: {
                 middleware: [
                     auth

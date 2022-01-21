@@ -11,24 +11,38 @@
 
 <!--    MENU BLOCK-->
     <div class="menu">
-      <ul>
-        <li v-if="this.role_name === 'admin'">
+      <ul v-if="this.profile">
+        <!--      NAVIGATION FOR ADMIN-->
+        <li v-if="this.profile.role_name === 'admin'" v-bind:class="this.$route.name === 'create_user' ? 'active' : ''">
           <router-link to="/create_user">
             <img src="@/assets/icon/userAdd.png" alt="">
             Ստեղծել օգտատեր
           </router-link>
         </li>
-        <li v-if="this.role_name === 'admin'">
-          <a href="#">
+        <li v-if="this.profile.role_name === 'admin'" v-bind:class="this.$route.name === 'engineers' ? 'active' : ''">
+          <router-link to="/engineers">
             <img src="@/assets/icon/engineer.png" alt="">
             Ինժեներներներ
-          </a>
+          </router-link>
         </li>
-        <li v-if="this.role_name === 'admin'">
-          <a href="#">
+        <li v-if="this.profile.role_name === 'admin'" v-bind:class="this.$route.name === 'owners' ? 'active' : ''">
+          <router-link to="/owners">
             <img src="@/assets/icon/owner.png" alt="">
             Սեփականատերեր
-          </a>
+          </router-link>
+        </li>
+        <!--      NAVIGATION FOR ENGINEER-->
+        <li v-if="this.profile.role_name === 'engineer'" v-bind:class="this.$route.name === 'companies' ? 'active' : ''">
+          <router-link to="/companies">
+            <img src="@/assets/icon/company.png" alt="">
+            Կազմակերպություններ
+          </router-link>
+        </li>
+        <li v-if="this.profile.role_name === 'engineer'" v-bind:class="this.$route.name === 'owners' ? 'active' : ''">
+          <router-link to="/owners">
+            <img src="@/assets/icon/owner.png" alt="">
+            Սեփականատերեր
+          </router-link>
         </li>
       </ul>
     </div>
@@ -40,7 +54,7 @@ import {mapState} from "vuex"
 export default {
   name: "v-menu-sidebar",
   computed: mapState({
-    role_name: state => state.auth.PROFILE.role_name
+    profile: state => state.auth.PROFILE
   })
 }
 </script>
@@ -48,10 +62,11 @@ export default {
 <style scoped>
 .menu_sidebar{
   width: 222px;
-  float: left;
   background-color: #343434;
-  height: 100vh;
+  min-height: 100%;
   padding-left: 12px;
+  display: inline-block;
+  padding-bottom: 15px;
 }
 .top{
   padding-top: 16px;
