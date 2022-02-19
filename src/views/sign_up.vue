@@ -17,7 +17,7 @@
 
         <input type="text" placeholder="Գեներացված կոդ" v-model="form.ticket_code">
 
-        <span v-if="this.msg" class="msg_err">{{this.msg}}</span>
+        <v-msg-response :msg="this.msg"/>
 
         <button>Գրանցում</button>
       </form>
@@ -33,9 +33,12 @@
 login
 <script>
 import VAuthFooter from "@/components/_general/v-auth-footer";
+import msgMixin from "@/mixins/msgMixin";
+import VMsgResponse from "@/components/_general/v-msg-response";
 export default {
   name: "sign_up",
-  components: {VAuthFooter},
+  components: {VMsgResponse, VAuthFooter},
+  mixins: [msgMixin],
   data(){
     return{
       form: {
@@ -45,8 +48,7 @@ export default {
         password: '',
         confirm_password: '',
         ticket_code: ''
-      },
-      msg: null
+      }
     }
   },
   methods: {
@@ -54,12 +56,11 @@ export default {
       e.preventDefault()
 
       if(this.form.password !== this.form.confirm_password)
-        this.msg = 'passwords do not match'
+        this.set_msg(false, 'passwords do not match')
       else{
         this.$store.dispatch("user/create_user", this.form).then(data => {
-          this.msg = null
           if(!data.success)
-            this.msg = data.obj.msg
+            this.set_msg(data.success, data.obj.msg)
           else
             this.$router.push({name: 'sign_in'})
         })

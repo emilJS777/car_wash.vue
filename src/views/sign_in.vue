@@ -9,7 +9,7 @@
 
         <input type="password" placeholder="Գաղտնաբառ*" v-model="form.password">
 
-        <span v-if="this.msg" class="msg_err">{{this.msg}}</span>
+        <v-msg-response :msg="this.msg"/>
 
         <button>Մուտք գործել</button>
       </form>
@@ -24,25 +24,26 @@
 
 <script>
 import VAuthFooter from "@/components/_general/v-auth-footer";
+import msgMixin from "@/mixins/msgMixin";
+import VMsgResponse from "@/components/_general/v-msg-response";
 export default {
   name: "sign_in",
-  components: {VAuthFooter},
+  mixins: [msgMixin],
+  components: {VMsgResponse, VAuthFooter},
   data(){
     return{
       form:{
         name: '',
         password: ''
-      },
-      msg: null
+      }
     }
   },
   methods: {
     sendForm(e){
       e.preventDefault()
       this.$store.dispatch("auth/login", this.form).then(data => {
-        this.msg = null
         if(!data.success)
-          this.msg = data.obj.msg
+          this.set_msg(data.success, data.obj.msg)
         else
           window.location.reload()
       })
