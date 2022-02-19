@@ -30,7 +30,7 @@
     <v-auth-footer/>
   </div>
 </template>
-login
+
 <script>
 import VAuthFooter from "@/components/_general/v-auth-footer";
 import msgMixin from "@/mixins/msgMixin";

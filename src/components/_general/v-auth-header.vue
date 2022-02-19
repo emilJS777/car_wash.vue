@@ -8,9 +8,9 @@
     <div class="center_block">
       <nav>
         <ul>
-          <li><a href="#">Մեր մասին</a></li>
-          <li><a href="#">Կոնտակտներ</a></li>
-          <li><a href="#">Ծառայություններ</a></li>
+<!--          <li><a href="#">Մեր մասին</a></li>-->
+<!--          <li><a href="#">Կոնտակտներ</a></li>-->
+<!--          <li><a href="#">Ծառայություններ</a></li>-->
         </ul>
       </nav>
 <!--      AUTH AND LANG-->
