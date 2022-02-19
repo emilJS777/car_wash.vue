@@ -2,17 +2,17 @@
   <div class="create_user">
     <v-title-block title="Ստեղծել կոդ" sub_title="ստեղծել 20 նիշ ունեցող կոդ" />
     <v-generation-code-block/>
-    <v-engineer-tickets-table class="table"/>
+    <v-tickets-table class="table"/>
   </div>
 </template>
 
 <script>
 import VTitleBlock from "@/components/_general/v-title-block";
 import VGenerationCodeBlock from "@/components/create_user/v-generation-code-block";
-import VEngineerTicketsTable from "@/components/create_user/v-engineer-tickets-table";
+import VTicketsTable from "@/components/create_user/v-tickets-table";
 export default {
   name: "create_user",
-  components: {VTitleBlock, VGenerationCodeBlock, VEngineerTicketsTable}
+  components: {VTitleBlock, VGenerationCodeBlock, VTicketsTable}
 }
 </script>
 

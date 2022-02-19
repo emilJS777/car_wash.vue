@@ -14,9 +14,10 @@ import signIn from "@/views/sign_in"
 import signUp from "@/views/sign_up"
 import home from "@/views/home"
 import createUser from "@/views/create_user";
-import engineers from "@/views/engineers";
-import companies from "@/views/companies";
 import owners from "@/views/owners"
+import add_device from "@/views/add_device"
+import devices from "@/views/devices"
+import devices_payment_notifications from "@/views/devices_payment_notifications";
 
 const router = new Router({
     mode: "history",
@@ -62,29 +63,39 @@ const router = new Router({
             },
         },
         {
-            path: '/engineers',
-            name: 'engineers',
-            component: engineers,
-            meta: {
-                middleware: [
-                    auth
-                ]
-            },
-        },
-        {
-            path: '/companies',
-            name: 'companies',
-            component: companies,
-            meta: {
-                middleware: [
-                    auth
-                ]
-            },
-        },
-        {
             path: '/owners',
             name: 'owners',
             component: owners,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/add_device',
+            name: 'add_device',
+            component: add_device,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/devices',
+            name: 'devices',
+            component: devices,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/devices_payment_notifications',
+            name: 'devices_payment_notifications',
+            component: devices_payment_notifications,
             meta: {
                 middleware: [
                     auth

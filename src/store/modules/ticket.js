@@ -5,10 +5,10 @@ const ticket = {
     namespaced: true,
     actions: {
         // ONLY FOR ADMIN USER
-        async get_engineer_tickets(context){
-            const data = await _request.actions.REQUEST(context, "/ticket/engineer", "GET")
+        async get_tickets(context){
+            const data = await _request.actions.REQUEST(context, "/ticket/owner", "GET")
             console.log(data)
-            context.commit("SET_ENGINEER_TICKETS", data.obj)
+            context.commit("SET_TICKETS", data.obj)
             return data
         },
         async create_ticket(context){
@@ -29,15 +29,15 @@ const ticket = {
         }
     },
     mutations: {
-        SET_ENGINEER_TICKETS(state, payload){
-            state.ENGINEER_TICKETS = payload
+        SET_TICKETS(state, payload){
+            state.TICKETS = payload
         }
     },
     state: {
-        ENGINEER_TICKETS: []
+        TICKETS: []
     },
     getters: {
-        GET_ENGINEER_TICKETS: state => state.ENGINEER_TICKETS
+        GET_TICKETS: state => state.TICKETS
     }
 }
 

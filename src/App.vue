@@ -37,10 +37,7 @@ li{
 a{
   text-decoration: none;
 }
-.msg_err{
-  color: darkred;
-  font-size: 12px;
-}
+
 .page{
   margin-left: 180px;
   margin-right: 180px;
@@ -53,6 +50,7 @@ a{
 .auth_page{
   display: flex;
   background-color: initial;
+  justify-content: center;
 }
 .content_block{
   border-radius: 3px;
@@ -109,6 +107,35 @@ a{
 
 .table > .tbody > .tr:nth-child(even){
   background-color: #F1EFEF;
+}
+.table .menu{
+  cursor: pointer;
+  position: relative;
+}
+.table .menu > ul{
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: #fff;
+  width: max-content;
+  border: 1px solid#bababa;
+  border-radius: 3px;
+  padding: 12px 22px;
+  display: none;
+}
+.table .menu:hover > ul{
+  display: block;
+}
+.table .menu:hover > ul > li{
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+.table .menu > ul > li:not(:last-child){
+  margin-bottom: 8px;
+}
+.table .menu > ul > li  img{
+  margin-right: 4px;
 }
 .deactivate > div{
   position: relative;

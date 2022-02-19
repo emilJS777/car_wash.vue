@@ -47,7 +47,7 @@ export default {
 .profile_block > div{
   display: grid;
   align-items: center;
-  grid-template-columns: auto 406px;
+  grid-template-columns: auto 506px;
   grid-gap: 5px;
   margin-bottom: 12px;
 }

@@ -19,29 +19,29 @@
             Ստեղծել օգտատեր
           </router-link>
         </li>
-        <li v-if="this.profile.role_name === 'admin'" v-bind:class="this.$route.name === 'engineers' ? 'active' : ''">
-          <router-link to="/engineers">
-            <img src="@/assets/icon/engineer.png" alt="">
-            Ինժեներներներ
-          </router-link>
-        </li>
         <li v-if="this.profile.role_name === 'admin'" v-bind:class="this.$route.name === 'owners' ? 'active' : ''">
           <router-link to="/owners">
             <img src="@/assets/icon/owner.png" alt="">
             Սեփականատերեր
           </router-link>
         </li>
-        <!--      NAVIGATION FOR ENGINEER-->
-        <li v-if="this.profile.role_name === 'engineer'" v-bind:class="this.$route.name === 'companies' ? 'active' : ''">
-          <router-link to="/companies">
-            <img src="@/assets/icon/company.png" alt="">
-            Կազմակերպություններ
+        <li v-if="this.profile.role_name === 'admin'" v-bind:class="this.$route.name === 'devices' ? 'active' : ''">
+          <router-link to="/devices">
+            <img src="@/assets/icon/devices.png" alt="">
+            Սարքեր
           </router-link>
         </li>
-        <li v-if="this.profile.role_name === 'engineer'" v-bind:class="this.$route.name === 'owners' ? 'active' : ''">
-          <router-link to="/owners">
-            <img src="@/assets/icon/owner.png" alt="">
-            Սեփականատերեր
+
+      <!--        NAVIGATION FOR OWNER-->
+        <li v-if="this.profile.role_name === 'owner'" v-bind:class="this.$route.name === 'devices_payment_notifications' ? 'active' : ''">
+          <router-link to="/devices_payment_notifications">
+            <img src="@/assets/icon/notifications.png" alt="">
+            Ծանուցումներ
+          </router-link>
+        <li v-if="this.profile.role_name === 'owner'" v-bind:class="this.$route.name === 'devices' ? 'active' : ''">
+          <router-link to="/devices">
+            <img src="@/assets/icon/devices.png" alt="">
+            Սարքեր
           </router-link>
         </li>
       </ul>

@@ -7,6 +7,8 @@ import request from "./modules/_request";
 import auth from "./modules/auth";
 import user from "./modules/user";
 import ticket from "./modules/ticket";
+import device from "./modules/device"
+import device_payment from "./modules/device_payment";
 
 export default new Vuex.Store({
     namespaced: true,
@@ -15,5 +17,7 @@ export default new Vuex.Store({
         auth,
         user,
         ticket,
+        device,
+        device_payment,
     }
 })
