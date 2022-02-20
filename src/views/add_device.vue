@@ -1,6 +1,6 @@
 <template>
   <div class="add_device">
-    <v-title-block title=" Ավելացնել սարք" sub_title="" />
+    <v-title-block title="Ավելացնել սարք" :sub_title="'Օգտատեր '+owner.name " />
     <v-add-device/>
   </div>
 </template>
@@ -10,7 +10,17 @@ import VAddDevice from "@/components/devices/v-add-device";
 import VTitleBlock from "@/components/_general/v-title-block";
 export default {
   name: "add_device",
-  components: {VAddDevice, VTitleBlock}
+  components: {VAddDevice, VTitleBlock},
+  data(){
+    return{
+      owner: null
+    }
+  },
+  mounted() {
+    this.$store.dispatch("user/get_user_by_id", parseInt(this.$route.query.owner_id)).then(data => {
+      this.owner = data.obj
+    })
+  }
 }
 </script>
 

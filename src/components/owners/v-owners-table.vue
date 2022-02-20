@@ -26,7 +26,7 @@
               <img src="@/assets/icon/menu_min.png" alt="">
               <ul>
                 <li @click="add_device_page(owner.id)"> <img src="@/assets/icon/device_add.png" alt=""> Ավելացնել սարք </li>
-                <li> <img src="@/assets/icon/devices_all.png" alt=""> Դիտել սարքը </li>
+                <li @click="devices_by_owner_id(owner.id)"> <img src="@/assets/icon/devices_all.png" alt=""> Դիտել սարքը </li>
               </ul>
             </div>
           </div>
@@ -62,6 +62,9 @@ export default {
     // device pages
     add_device_page(owner_id){
       this.$router.push({path: '/add_device?owner_id='+owner_id})
+    },
+    devices_by_owner_id(owner_id){
+      this.$router.push({path: '/devices?owner_id='+owner_id})
     }
   }
 }

@@ -3,7 +3,7 @@
     <div class="table">
       <!--        HEAD-->
       <div class="thead">
-        <div class="th">Օգտանուն</div>
+        <div class="th">Օգտատեր</div>
         <div class="th">կոդ</div>
         <div class="th">Ստեղծման Ժամկետ</div>
         <div class="th">Կարգավիճակ</div>
@@ -12,7 +12,9 @@
       <div class="tbody">
         <div class="tr" v-for="device in devices" :key="device.id">
           <div class="td">
-            <span>{{ device.owner_name }}</span>
+            <span v-for="device_id_owner_name in device_id_owner_name_arr" :key="device_id_owner_name.device_id">
+              {{ device_id_owner_name.device_id === device.id ? device_id_owner_name.owner_name : ''}}
+            </span>
           </div>
           <div class="td">
             <span>{{ device.code }}</span>
@@ -35,31 +37,44 @@ export default {
   name: "v-devices-table",
   data(){
     return{
-      devices: []
+      devices: [],
+      device_id_owner_name_arr: []
     }
   },
   mounted(){
-    let count = 0
-    this.$store.dispatch("device/get_device_ids").then(data => {
-      data.obj.forEach(device_id => {
-        this.get_device_by_id(device_id)
-        count++
-      })
+    // IF PATH QUERY OWNER ID GET DEVICES ONLY FOR ThiS OWNER
+    if(this.$route.query.owner_id)
+      this.get_device_ids_by_owner_id(parseInt(this.$route.query.owner_id))
 
-      // SET DEVICE LENGTH
-      this.$emit("deviceLength", count)
-    })
+    // ELSE GET ALL DEVICES
+    else
+      this.get_device_ids()
   },
   methods:{
-    get_device_by_id(device_id){
-      this.$store.dispatch("device/get_device_by_id", device_id).then(data => {
-        this.get_user_by_id(data.obj, data.obj.owner_id)
+    get_device_ids_by_owner_id(owner_id){
+      this.$store.dispatch("device/get_device_ids_by_owner_id", owner_id).then(data => {
+        data.obj.forEach(device_id => {
+          this.get_device_by_id(device_id)
+        })
       })
     },
-    get_user_by_id(device, user_id){
+    get_device_ids(){
+      this.$store.dispatch("device/get_device_ids").then(data => {
+        data.obj.forEach(device_id => {
+          this.get_device_by_id(device_id)
+        })
+      })
+    },
+    get_device_by_id(device_id){
+      this.$store.dispatch("device/get_device_by_id", device_id).then(data => {
+        this.devices.push(data.obj)
+        this.get_user_by_id(data.obj.id, data.obj.owner_id)
+        console.log(data.obj)
+      })
+    },
+    get_user_by_id(device_id, user_id){
       this.$store.dispatch("user/get_user_by_id", user_id).then(data => {
-        device.owner_name = data.obj.name
-        this.devices.push(device)
+        this.device_id_owner_name_arr.push({device_id: device_id, owner_name: data.obj.name})
       })
     }
   }

@@ -14,6 +14,10 @@ const device = {
         async get_device_by_id(context, device_id){
             const data = await _request.actions.REQUEST(context, '/device/'+device_id, 'GET')
             return data
+        },
+        async get_device_ids_by_owner_id(context, owner_id){
+            const data = await _request.actions.REQUEST(context, '/device/by_owner_id/'+owner_id, 'GET')
+            return data
         }
     }
 }

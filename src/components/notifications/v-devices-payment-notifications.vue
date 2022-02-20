@@ -2,8 +2,17 @@
   <div class="devices_payment_notifications content_block">
     <div class="notification" v-for="payment in device_payments" :key="payment.id">
       <p>
-        <span class="date">{{payment.creation_date}}</span> <span>{{ payment.device_code }}</span> կոդով սարքի հաշվին մուտք է գործել
-        <span class="price">{{ payment.price }}</span> {{payment.currency}}
+        <span class="date">{{payment.creation_date}} </span>
+
+        <span v-for="device_code_payment_id in devices_code_payment_id" :key="device_code_payment_id.payment_id">
+          {{ device_code_payment_id.payment_id === payment.id ? device_code_payment_id.device_code : '' }}
+        </span>
+
+        կոդով սարքի հաշվին մուտք է գործել
+
+        <span class="price">{{ payment.price }}</span>
+
+        {{payment.currency}}
       </p>
     </div>
 
@@ -17,7 +26,8 @@ export default {
   name: "v-devices-payment-notifications",
   data(){
     return{
-      device_payments: []
+      device_payments: [],
+      devices_code_payment_id: []
     }
   },
   mounted() {
@@ -30,14 +40,13 @@ export default {
   methods:{
     async get_device_payment_by_id(payment_id){
       const data = await this.$store.dispatch("device_payment/get_device_payment_by_id", payment_id)
-      await this.get_device_by_id(data.obj, data.obj.device_id)
-
+      this.device_payments.push(data.obj)
+      await this.get_device_code_by_id(data.obj.device_id, data.obj.id)
     },
-    async get_device_by_id(payment, device_id){
+    async get_device_code_by_id(device_id, payment_id){
       const data = await this.$store.dispatch("device/get_device_by_id", device_id)
-      payment.device_code = data.obj.code
-      this.device_payments.push(payment)
-    }
+      this.devices_code_payment_id.push({device_code: data.obj.code, payment_id: payment_id})
+    },
   }
 }
 </script>
