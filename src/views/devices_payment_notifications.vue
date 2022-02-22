@@ -1,7 +1,7 @@
 <template>
   <div class="payment_notifications">
-    <v-title-block title="Ծանուցումներ" sub_title="Ծանուցում սարքերի շահույթի մասին"/>
-    <v-devices-payment-notifications class="notifications"/>
+    <v-title-block title="Ծանուցումներ" sub_title="Ծանուցում սարքերի շահույթի մասին. ընդհանուր" :bold="this.total_price"/>
+    <v-devices-payment-notifications class="notifications" @set_total="(price) => this.total_price += parseFloat(price)"/>
   </div>
 </template>
 
@@ -10,7 +10,12 @@ import VTitleBlock from "@/components/_general/v-title-block";
 import VDevicesPaymentNotifications from "@/components/notifications/v-devices-payment-notifications";
 export default {
   name: "devices_payment_notifications.vue",
-  components: {VDevicesPaymentNotifications, VTitleBlock}
+  components: {VDevicesPaymentNotifications, VTitleBlock},
+  data(){
+    return{
+      total_price: 0
+    }
+  }
 }
 </script>
 

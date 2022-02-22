@@ -2,47 +2,69 @@
   <div class="generation_code_block content_block">
     <div class="form_block">
       <div>
-        <input type="text" placeholder="Ստանալ կոդը" :value="new_code" disabled>
+        <input type="text" placeholder="Ստանալ կոդը" :value="new_ticket_code" disabled>
         <button @click="generate_code"><img src="@/assets/icon/generate_code.png" alt=""></button>
       </div>
       <div>
         <input type="text" placeholder="Ավելացնել էլ․ հասցե" v-model="email">
       </div>
+
+      <v-msg-response :msg="this.msg"/>
     </div>
 
     <div class="btn_block">
       <button @click="clear_all">Ջնջել ամբողջը</button>
-      <button>Ուղարկել կոդը</button>
+      <button @click="this.create_email_and_send_ticket_code">Ուղարկել կոդը</button>
     </div>
   </div>
 </template>
 
 <script>
+import VMsgResponse from "@/components/_general/v-msg-response";
+import msgMixin from "@/mixins/msgMixin";
 export default {
   name: "v-generation-code-block",
+  components: {VMsgResponse},
+  mixins: [msgMixin],
   data(){
     return{
-      new_code: null,
+      new_ticket_code: null,
       email: null,
-      new_code_id: null
+      new_ticket_id: null,
     }
   },
   methods: {
     generate_code(){
       this.$store.dispatch("ticket/create_ticket").then(data => {
         if(data.success) {
-          this.new_code = data.obj.code
-          this.new_code_id = data.obj.id
+          this.new_ticket_code = data.obj.code
+          this.new_ticket_id = data.obj.id
         }
       })
     },
     clear_all(){
-      this.$store.dispatch("ticket/delete_ticket", this.new_code_id).then(data => {
+      this.$store.dispatch("ticket/delete_ticket", this.new_ticket_id).then(data => {
         if(data.success){
           this.email = null
-          this.new_code_id = null
-          this.new_code = null
+          this.new_ticket_id = null
+          this.new_ticket_code = null
         }
+      })
+    },
+    create_email_and_send_ticket_code(){
+      this.$store.dispatch("email/create_email_by_ticket_id",
+          {ticket_id: this.new_ticket_id, address: this.email}).then(data => {
+        if(!data.success)
+          this.set_msg(data.success, data.obj.msg)
+        else
+          this.send_ticket_code_by_email_id(data.obj.id)
+      })
+    },
+    send_ticket_code_by_email_id(email_id){
+      this.$store.dispatch("email/send_ticket_code_by_email_id", email_id).then(data => {
+        this.set_msg(data.success, data.obj.msg)
+        if(data.success)
+          this.clear_all()
       })
     }
   }

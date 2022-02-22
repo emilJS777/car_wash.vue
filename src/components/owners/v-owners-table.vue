@@ -47,22 +47,22 @@ export default {
   mounted(){
     this.$store.dispatch("ticket/get_tickets").then(() => {
       this.$store.getters["ticket/GET_TICKETS"].forEach(ticket => {
-        if(ticket.user_id)
-          this.get_user_by_id(ticket.user_id, ticket.active)
+        if(ticket.user_id){
+          this.$store.dispatch("user/get_user_by_id", ticket.user_id).then(data => {
+            data.obj.active = ticket.active;
+            this.owners.push(data.obj)
+          })
+        }
+          // this.get_user_by_id(ticket.user_id, ticket.active)
       })
     })
   },
   methods:{
-    get_user_by_id(user_id, ticket_active){
-      this.$store.dispatch("user/get_user_by_id", user_id).then(data => {
-        data.obj.active = ticket_active;
-        this.owners.push(data.obj)
-      })
-    },
-    // device pages
+    // add device page
     add_device_page(owner_id){
       this.$router.push({path: '/add_device?owner_id='+owner_id})
     },
+    // devices page by owner
     devices_by_owner_id(owner_id){
       this.$router.push({path: '/devices?owner_id='+owner_id})
     }

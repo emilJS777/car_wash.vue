@@ -1,14 +1,15 @@
 <template>
   <div class="title_block">
     <h3>{{this.title}}</h3>
-    <span>{{ this.sub_title }}</span>
+    <span>{{ this.sub_title }} </span>
+    <span class="bold">{{this.bold}}</span>
   </div>
 </template>
 
 <script>
 export default {
   name: "v-title-block",
-  props: ['title', 'sub_title']
+  props: ['title', 'sub_title', 'bold']
 }
 </script>
 
@@ -26,5 +27,9 @@ h3{
 span{
   font-size: 12px;
   color: #736D6D;
+}
+.bold{
+  font-weight: initial;
+  color: #376b45;
 }
 </style>

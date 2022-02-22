@@ -41,6 +41,7 @@ export default {
     async get_device_payment_by_id(payment_id){
       const data = await this.$store.dispatch("device_payment/get_device_payment_by_id", payment_id)
       this.device_payments.push(data.obj)
+      this.$emit("set_total", data.obj.price)
       await this.get_device_code_by_id(data.obj.device_id, data.obj.id)
     },
     async get_device_code_by_id(device_id, payment_id){

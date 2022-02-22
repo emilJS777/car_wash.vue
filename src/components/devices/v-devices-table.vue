@@ -70,6 +70,8 @@ export default {
         this.devices.push(data.obj)
         this.get_user_by_id(data.obj.id, data.obj.owner_id)
         console.log(data.obj)
+        // EMIT DEVICES COUNT
+        this.$emit("device_length", this.devices.length)
       })
     },
     get_user_by_id(device_id, user_id){

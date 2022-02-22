@@ -101,6 +101,16 @@ const router = new Router({
                     auth
                 ]
             },
+        },
+        {
+            path: '/*',
+            name: 'other',
+            component: home,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
         }
     ]
 })

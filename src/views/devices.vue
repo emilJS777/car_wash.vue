@@ -1,7 +1,7 @@
 <template>
   <div class="devices">
     <v-title-block title="Սարքեր" :sub_title="'ներկայիս քանակն է '+this.deviceLength "/>
-    <v-devices-table class="table" @deviceLength="(len)=>this.deviceLength = len"/>
+    <v-devices-table class="table" @device_length="(len)=>this.deviceLength = len"/>
   </div>
 </template>
 
