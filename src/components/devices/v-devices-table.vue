@@ -5,7 +5,9 @@
       <div class="thead">
         <div class="th">Օգտատեր</div>
         <div class="th">կոդ</div>
-        <div class="th">Ստեղծման Ժամկետ</div>
+        <div class="th"><span v-if="profile.role_name == 'owner'">Ջւր</span></div>
+        <div class="th"><span v-if="profile.role_name == 'owner'">Փրփուր</span></div>
+        <div class="th">Թարմացւմ</div>
         <div class="th">Կարգավիճակ</div>
       </div>
       <!--        BODY-->
@@ -19,6 +21,14 @@
           <div class="td">
             <span>{{ device.code }}</span>
           </div>
+
+          <div class="td" >
+            <span style="font-weight: bold"  v-if="profile.role_name == 'owner'">{{ device.water ? 1 : 0 }}</span>
+          </div>
+          <div class="td">
+            <span style="font-weight: bold"  v-if="profile.role_name == 'owner'">{{ device.lather ? 1 : 0 }}</span>
+          </div>
+
           <div class="td">
             <span>{{ device.last_update }}</span>
           </div>
@@ -33,12 +43,16 @@
 </template>
 
 <script>
+import {mapState} from "vuex"
 export default {
   name: "v-devices-table",
+  computed: mapState({
+    profile: state => state.auth.PROFILE
+  }),
   data(){
     return{
       devices: [],
-      device_id_owner_name_arr: []
+      device_id_owner_name_arr: [],
     }
   },
   mounted(){
@@ -55,6 +69,7 @@ export default {
       this.$store.dispatch("device/get_device_ids_by_owner_id", owner_id).then(data => {
         data.obj.forEach(device_id => {
           this.get_device_by_id(device_id)
+          this.get_device_content_by_device_id(device_id)
         })
       })
     },
@@ -85,7 +100,7 @@ export default {
 
 <style scoped>
   .table > .thead, .table > .tbody > .tr{
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr .6fr .3fr .3fr 1fr 1fr;
   }
   .table > .tbody > .tr > .td:last-child{
     overflow: initial;
