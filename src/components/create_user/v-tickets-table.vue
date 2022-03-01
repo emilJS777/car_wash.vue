@@ -82,7 +82,7 @@ export default {
 
 <style scoped>
 .table > .thead, .table > .tbody > .tr{
-  grid-template-columns: 1fr 1fr 2fr 1fr .5fr;
+  grid-template-columns: 1fr 1fr 1fr .5fr .5fr;
 }
 
 </style>
