@@ -1,12 +1,12 @@
 <template>
   <div class="table_block content_block">
-    <div class="table">
+    <div v-bind:class="profile.role_name === 'owner' ? 'table owner-table' : 'table'">
       <!--        HEAD-->
       <div class="thead">
         <div class="th">Օգտատեր</div>
         <div class="th">կոդ</div>
-        <div class="th"><span v-if="profile.role_name == 'owner'">Ջւր</span></div>
-        <div class="th"><span v-if="profile.role_name == 'owner'">Փրփուր</span></div>
+        <div class="th" v-if="profile.role_name == 'owner'"><span>Ջւր</span></div>
+        <div class="th" v-if="profile.role_name == 'owner'"><span>Փրփուր</span></div>
         <div class="th">Թարմացւմ</div>
         <div class="th">Կարգավիճակ</div>
       </div>
@@ -22,11 +22,11 @@
             <span>{{ device.code }}</span>
           </div>
 
-          <div class="td" >
-            <span style="font-weight: bold"  v-if="profile.role_name == 'owner'">{{ device.water ? 1 : 0 }}</span>
+          <div class="td" v-if="profile.role_name == 'owner'">
+            <span v-bind:class="device.water ? 'success' : 'err'">{{ device.water ? 'Կա' : 'Չկա' }}</span>
           </div>
-          <div class="td">
-            <span style="font-weight: bold"  v-if="profile.role_name == 'owner'">{{ device.lather ? 1 : 0 }}</span>
+          <div class="td" v-if="profile.role_name == 'owner'">
+            <span v-bind:class="device.lather ? 'success' : 'err'">{{ device.lather ? 'Կա' : 'Չկա' }}</span>
           </div>
 
           <div class="td">
@@ -100,9 +100,19 @@ export default {
 
 <style scoped>
   .table > .thead, .table > .tbody > .tr{
-    grid-template-columns: 1fr .6fr .3fr .3fr 1fr 1fr;
+    grid-template-columns: .3fr .3fr .4fr .2fr;
   }
+  .owner-table > .thead, .owner-table > .tbody > .tr{
+    grid-template-columns: .3fr .3fr .2fr .2fr .4fr .2fr;
+  }
+
   .table > .tbody > .tr > .td:last-child{
     overflow: initial;
+  }
+  .success{
+    color: #0c7329;
+  }
+  .err{
+    color: brown;
   }
 </style>

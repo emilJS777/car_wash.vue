@@ -22,11 +22,10 @@
 
             <div class="td">{{ item.expiration_date }}</div>
 
-            <div class="td content_center">
+            <div class="td content_center deactivate">
               <img src="@/assets/icon/signalGreen.png" v-if="item.active">
               <img src="@/assets/icon/signalRed.png" v-else>
-            </div>
-            <div class="td deactivate">
+
               <div @click="ticket_active_update(item.id)">
                 <img src="@/assets/icon/deactivate.png" alt="" v-if="item.active">
                 <svg v-else xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
@@ -82,7 +81,7 @@ export default {
 
 <style scoped>
 .table > .thead, .table > .tbody > .tr{
-  grid-template-columns: 1fr 1fr 1fr .5fr .5fr;
+  grid-template-columns: .6fr 1fr 1fr .5fr;
 }
 
 </style>

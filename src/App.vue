@@ -139,6 +139,7 @@ a{
 }
 .deactivate > div{
   position: relative;
+  margin-left: 50px;
 }
 .deactivate > div > span{
   position: absolute;
