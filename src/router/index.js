@@ -18,6 +18,8 @@ import owners from "@/views/owners"
 import add_device from "@/views/add_device"
 import devices from "@/views/devices"
 import devices_payment_notifications from "@/views/devices_payment_notifications";
+import companies from "@/views/companies";
+import add_company from "@/views/add_company"
 
 const router = new Router({
     mode: "history",
@@ -96,6 +98,26 @@ const router = new Router({
             path: '/devices_payment_notifications',
             name: 'devices_payment_notifications',
             component: devices_payment_notifications,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/companies',
+            name: 'companies',
+            component: companies,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/add_company',
+            name: 'add_company',
+            component: add_company,
             meta: {
                 middleware: [
                     auth

@@ -25,12 +25,20 @@
             Սեփականատերեր
           </router-link>
         </li>
+        <li v-bind:class="this.$route.name === 'companies' ? 'active' : ''">
+          <router-link to="/companies">
+            <img src="@/assets/icon/company.png" alt="">
+            Ավտոլվացման կետեր
+          </router-link>
+        </li>
         <li v-if="this.profile.role_name === 'admin'" v-bind:class="this.$route.name === 'devices' ? 'active' : ''">
           <router-link to="/devices">
             <img src="@/assets/icon/devices.png" alt="">
             Սարքեր
           </router-link>
         </li>
+
+
 
       <!--        NAVIGATION FOR OWNER-->
         <li v-if="this.profile.role_name === 'owner'" v-bind:class="this.$route.name === 'devices_payment_notifications' ? 'active' : ''">

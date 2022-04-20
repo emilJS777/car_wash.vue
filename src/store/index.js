@@ -10,6 +10,7 @@ import ticket from "./modules/ticket";
 import device from "./modules/device"
 import device_payment from "./modules/device_payment";
 import email from "./modules/email"
+import companies from "./modules/companies";
 
 export default new Vuex.Store({
     namespaced: true,
@@ -20,6 +21,7 @@ export default new Vuex.Store({
         ticket,
         device,
         device_payment,
+        companies,
         email,
     }
 })

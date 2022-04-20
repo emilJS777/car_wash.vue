@@ -7,6 +7,17 @@
       <div>
         <input type="text" placeholder="Լրացնել սարքի կոդը*" v-model="form.code">
       </div>
+
+      <label for="multi-select">Multiple Select</label>
+      <div class="select select--multiple">
+        <select id="multi-select" multiple>
+          <option v-for="company in companies" :key="company.id" :value="company.id" @click="set_company_id(company.id)">
+            {{company.title}} {{company.address}}
+          </option>
+        </select>
+        <span class="focus"></span>
+      </div>
+
     </div>
 
     <div class="btn_block">
@@ -24,18 +35,39 @@ export default {
   mixins: [msgMixin],
   data(){
     return{
+      companies: [],
       form: {
         code: null,
-        owner_id: parseInt(this.$route.query.owner_id)
+        owner_id: parseInt(this.$route.query.owner_id),
+        car_wash_id: null
       }
     }
+  },
+
+  mounted() {
+    this.$store.dispatch("companies/get_company_ids_by_owner_id", this.$route.query.owner_id).then(data => {
+      if(data.success)
+        data.obj.forEach(company_id => {
+          this.get_company_by_id(company_id)
+        })
+    })
   },
 
   methods:{
     create_device(){
       this.$store.dispatch("device/create_device", this.form).then(data => {
         this.set_msg(data.success, data.obj.msg)
+        console.log(this.form)
       })
+    },
+    get_company_by_id(company_id){
+      this.$store.dispatch("companies/get_companies_by_id", company_id).then(data => {
+        if(data.success)
+          this.companies.push(data.obj)
+      })
+    },
+    set_company_id(company_id){
+      this.form.car_wash_id = parseInt(company_id)
     }
   }
 }
@@ -89,5 +121,9 @@ input{
   border-radius: 3px;
   cursor: pointer;
   margin-left: 23px;
+}
+
+.select, .select > select{
+  width: max-content;
 }
 </style>

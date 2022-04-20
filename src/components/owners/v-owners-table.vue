@@ -27,6 +27,9 @@
               <ul>
                 <li @click="add_device_page(owner.id)"> <img src="@/assets/icon/device_add.png" alt=""> Ավելացնել սարք </li>
                 <li @click="devices_by_owner_id(owner.id)"> <img src="@/assets/icon/devices_all.png" alt=""> Դիտել սարքը </li>
+
+                <li @click="add_company_page(owner.id)"> <img src="@/assets/icon/device_add.png" alt=""> Ավելացնել ավտոլվացման կետ </li>
+                <li @click="companies_by_owner_id(owner.id)"> <img src="@/assets/icon/devices_all.png" alt=""> Դիտել ավտոլվացման կետ </li>
               </ul>
             </div>
           </div>
@@ -62,9 +65,17 @@ export default {
     add_device_page(owner_id){
       this.$router.push({path: '/add_device?owner_id='+owner_id})
     },
+    // add company page
+    add_company_page(owner_id){
+      this.$router.push({path: '/add_company?owner_id='+owner_id})
+    },
     // devices page by owner
     devices_by_owner_id(owner_id){
       this.$router.push({path: '/devices?owner_id='+owner_id})
+    },
+    // companies page by owner id
+    companies_by_owner_id(owner_id){
+      this.$router.push({path: '/companies?owner_id='+owner_id})
     }
   }
 }
