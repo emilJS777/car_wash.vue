@@ -9,13 +9,13 @@
         <input type="text" placeholder="Լրացնել հասցեն" v-model="form.address">
       </div>
 
-      <div>
-        <input type="text" placeholder="Լրացնել username" v-model="form.username">
-      </div>
+<!--      <div>-->
+<!--        <input type="text" placeholder="Լրացնել username" v-model="form.username">-->
+<!--      </div>-->
 
-      <div>
-        <input type="password" placeholder="Լրացնել password" v-model="form.password">
-      </div>
+<!--      <div>-->
+<!--        <input type="password" placeholder="Լրացնել password" v-model="form.password">-->
+<!--      </div>-->
 
     </div>
 
@@ -37,8 +37,8 @@ export default {
       form: {
         title: '',
         address: '',
-        username: '',
-        password: '',
+        // username: '',
+        // password: '',
         owner_id: parseInt(this.$route.query.owner_id)
       }
     }

@@ -20,6 +20,7 @@ import devices from "@/views/devices"
 import devices_payment_notifications from "@/views/devices_payment_notifications";
 import companies from "@/views/companies";
 import add_company from "@/views/add_company"
+import payments from "@/views/payments"
 
 const router = new Router({
     mode: "history",
@@ -88,6 +89,16 @@ const router = new Router({
             path: '/devices',
             name: 'devices',
             component: devices,
+            meta: {
+                middleware: [
+                    auth
+                ]
+            },
+        },
+        {
+            path: '/payments',
+            name: 'payments',
+            component: payments,
             meta: {
                 middleware: [
                     auth
