@@ -1,7 +1,7 @@
 import Axios from "axios";
 import store from "@/store";
-// const api_url = "http://144.91.119.81:5003/api"
-const api_url = "http://127.0.0.1:5000/api"
+const api_url = "http://144.91.119.81:5003/api"
+// const api_url = "http://127.0.0.1:5000/api"
 
 
 const REFRESH = (payload) => {
