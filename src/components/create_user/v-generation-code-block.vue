@@ -104,20 +104,5 @@ input{
   cursor: pointer;
   right: 8px;
 }
-.btn_block{
-  margin-top: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.btn_block button{
-  padding: 9px 24px;
-  background-color: #343434;
-  font-size: 13px;
-  color: #fafafa;
-  border: 0;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-left: 23px;
-}
+
 </style>

@@ -3,7 +3,6 @@
     <div class="table">
       <!--        HEAD-->
       <div class="thead">
-        <div class="th">Device id</div>
         <div class="th">Գինը</div>
         <div class="th">Վճարման տեսակ</div>
         <div class="th">Ժամ</div>
@@ -11,9 +10,6 @@
       <!--        BODY-->
       <div class="tbody">
         <div class="tr" v-for="payment in payments" :key="payment.id">
-          <div class="td">
-            <span>{{ payment.device_id }}</span>
-          </div>
           <div class="td">
             <span>{{ payment.price }} {{ payment.currency }}</span>
           </div>

@@ -21,6 +21,10 @@
         </option>
       </select>
     </div>
+
+    <div class="btn_block">
+      <button @click="sendFilter">որոնել</button>
+    </div>
   </div>
 </template>
 
@@ -39,7 +43,7 @@ export default {
   mounted() {
     this.get_companies()
     this.get_devices()
-    this.changeDevice()
+    this.sendFilter()
   },
   methods: {
     // COMPANIES FILTER
@@ -78,6 +82,10 @@ export default {
       })
     },
     changeDevice(){
+
+    },
+
+    sendFilter(){
       this.$emit("filter", {'device_id': this.select_device_id, 'company_id': this.select_company})
     }
   }
@@ -87,7 +95,7 @@ export default {
 <style scoped>
 .v-filter-block{
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 3fr;
 }
 label{
   display: block;

@@ -1,7 +1,7 @@
 <template>
   <div class="payments">
     <v-title-block title="Վճարումներ"/>
-    <v-filter-block class="filter" @filter="get_device_payments"/>
+    <v-filter-block class="filter" @filter="this.get_device_payments"/>
     <v-payments-table class="table" :payments="payments"/>
   </div>
 </template>
