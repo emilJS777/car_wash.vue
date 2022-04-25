@@ -1,5 +1,9 @@
 <template>
   <div class="v-filter-block">
+    <div class="btn_block">
+      <button @click="sendFilter">որոնել</button>
+    </div>
+
     <div>
       <label>Ավտոլվացման կետ</label>
       <select class="minimal" v-model="select_company" @change="this.changeCompany">
@@ -22,9 +26,6 @@
       </select>
     </div>
 
-    <div class="btn_block">
-      <button @click="sendFilter">որոնել</button>
-    </div>
   </div>
 </template>
 
@@ -95,11 +96,15 @@ export default {
 <style scoped>
 .v-filter-block{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 3fr;
+  grid-template-columns: .8fr 1fr 1fr 3fr;
 }
 label{
   display: block;
   margin-bottom: 5px;
   font-size: 14px;
+}
+.btn_block{
+  align-items: center;
+  justify-content: left;
 }
 </style>

@@ -97,7 +97,6 @@ export default {
       this.$store.dispatch("device/get_device_ids_by_car_wash_id", car_wash_id).then(data => {
         data.obj.forEach(device_id => {
           this.get_device_by_id(device_id)
-          this.get_device_content_by_device_id(device_id)
         })
       })
     },

@@ -75,8 +75,9 @@ a{
   color: #736D6D;
 }
 /*TABLE*/
-.table{
-  min-height: 350px;
+.table .tbody{
+  height: 550px;
+  overflow-y: auto;
 }
 .table > .thead, .table > .tbody > .tr{
   background-color: #F8F7F7;
@@ -114,8 +115,8 @@ a{
 }
 .table .menu > ul{
   position: absolute;
-  left: 100%;
-  top: 0;
+  right: 100%;
+  top: -10px;
   background-color: #fff;
   width: max-content;
   border: 1px solid#bababa;

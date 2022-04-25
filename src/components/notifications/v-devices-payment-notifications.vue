@@ -1,20 +1,20 @@
 <template>
   <div class="devices_payment_notifications content_block">
-    <div class="notification" v-for="payment in device_payments" :key="payment.id">
-      <p>
-        <span class="date">{{payment.creation_date}} </span>
+<!--    <div class="notification" v-for="payment in device_payments" :key="payment.id">-->
+<!--      <p>-->
+<!--        <span class="date">{{payment.creation_date}} </span>-->
 
-        <span v-for="device_code_payment_id in devices_code_payment_id" :key="device_code_payment_id.payment_id">
-          {{ device_code_payment_id.payment_id === payment.id ? device_code_payment_id.device_code : '' }}
-        </span>
+<!--        <span v-for="device_code_payment_id in devices_code_payment_id" :key="device_code_payment_id.payment_id">-->
+<!--          {{ device_code_payment_id.payment_id === payment.id ? device_code_payment_id.device_code : '' }}-->
+<!--        </span>-->
 
-        կոդով սարքի հաշվին մուտք է գործել
+<!--        կոդով սարքի հաշվին մուտք է գործել-->
 
-        <span class="price">{{ payment.price }}</span>
+<!--        <span class="price">{{ payment.price }}</span>-->
 
-        {{payment.currency}}
-      </p>
-    </div>
+<!--        {{payment.currency}}-->
+<!--      </p>-->
+<!--    </div>-->
 
     <h3 v-if="device_payments.length < 1">Ծանուցումներ չկան</h3>
 
@@ -31,11 +31,11 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("device_payment/get_device_payment_ids").then(data => {
-      data.obj.forEach(payment_id => {
-        this.get_device_payment_by_id(payment_id)
-      })
-    })
+    // this.$store.dispatch("device_payment/get_device_payment_ids").then(data => {
+    //   data.obj.forEach(payment_id => {
+    //     this.get_device_payment_by_id(payment_id)
+    //   })
+    // })
   },
   methods:{
     async get_device_payment_by_id(payment_id){

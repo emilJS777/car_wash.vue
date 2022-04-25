@@ -3,6 +3,7 @@
     <div class="table">
       <!--        HEAD-->
       <div class="thead">
+        <div class="th">Սարք</div>
         <div class="th">Գինը</div>
         <div class="th">Վճարման տեսակ</div>
         <div class="th">Ժամ</div>
@@ -10,6 +11,9 @@
       <!--        BODY-->
       <div class="tbody">
         <div class="tr" v-for="payment in payments" :key="payment.id">
+          <div class="td">
+            <span>{{ payment.device_code }}</span>
+          </div>
           <div class="td">
             <span>{{ payment.price }} {{ payment.currency }}</span>
           </div>
@@ -34,7 +38,7 @@ export default {
 
 <style scoped>
 .table > .thead, .table > .tbody > .tr{
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .table > .tbody > .tr > .td:last-child{
   overflow: initial;
