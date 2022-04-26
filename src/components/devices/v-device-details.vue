@@ -2,7 +2,7 @@
   <div class="device_details">
     <div class="content">
       <div class="head">
-        <h3>Մանրամասներ <span>&#x2715;</span></h3>
+        <h3>Մանրամասներ <span @click="closeDetails">&#x2715;</span></h3>
         <i><b>Սարք</b>: {{this.device.code}}</i>
       </div>
 
@@ -49,6 +49,9 @@ export default {
         if(data.success)
           this.power_off_on = data.obj.active
       })
+    },
+    closeDetails(){
+      this.$emit("close")
     }
   }
 }

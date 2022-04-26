@@ -5,6 +5,7 @@
                      @device_details="(device)=>this.device_details.device = device"/>
 
     <v-device-details style="margin-top: 30px"
+                      @close="()=>this.device_details.device = {}"
                       :device="device_details.device"
                       v-if="this.device_details.device.id"/>
   </div>
