@@ -8,7 +8,7 @@ const device = {
             return data
         },
         async change_device_active(context, body){
-            const data = await _request.actions.REQUEST(context, '/device/power', 'PUT', body)
+            const data = await _request.actions.REQUEST(context, '/device/active', 'PUT', body)
             return data
         },
         async delete_device(context, device_id) {

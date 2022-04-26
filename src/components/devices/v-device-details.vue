@@ -44,7 +44,8 @@ export default {
   },
   methods:{
     changePowerOffOn(){
-      this.$store.dispatch("device/change_device_active", {id: this.device.id, active: this.power_off_on}).then(data => {
+      this.$store.dispatch("device/change_device_active",
+          {id: this.device.id, active: this.power_off_on}).then(data => {
         if(data.success)
           this.power_off_on = data.obj.active
       })
