@@ -46,7 +46,8 @@
                   <img src="@/assets/icon/device_add.png" alt="">
                   հեռացնել
                 </li>
-                <li @click="get_device_details(device.id)" v-if="profile.role_name === 'owner'">
+                <li @click="get_device_details({'id': device.id, 'active': device.active, 'code': device.code})"
+                    v-if="profile.role_name === 'owner'">
                   <img src="@/assets/icon/devices_all.png" alt="">
                   Դիտել մանրամասներ
                 </li>
@@ -121,8 +122,8 @@ export default {
       })
     },
     //  DEVICE DETAILS
-    get_device_details(device_id){
-      this.$emit("device_details", device_id)
+    get_device_details(device){
+      this.$emit("device_details", device)
     },
     // DELETE DEVICE
     delete_device(device_id){

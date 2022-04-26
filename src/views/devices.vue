@@ -2,14 +2,11 @@
   <div class="devices">
     <v-title-block title="Սարքեր" :sub_title="'ներկայիս քանակն է '+this.deviceLength "/>
     <v-devices-table class="table" @device_length="(len)=>this.deviceLength = len"
-                     @device_details="(device_id)=>this.device_details.device_id = device_id"/>
+                     @device_details="(device)=>this.device_details.device = device"/>
 
-    <v-title-block title="մանրամասներ"
-                   :sub_title="'Սարք '+this.device_details.device_id"
-                   style="margin-top: 15px;"
-                   v-if="this.device_details.device_id"/>
     <v-device-details style="margin-top: 30px"
-                      v-if="this.device_details.device_id"/>
+                      :device="device_details.device"
+                      v-if="this.device_details.device.id"/>
   </div>
 </template>
 
@@ -24,7 +21,7 @@ name: "devices",
     return{
       deviceLength: 0,
       device_details: {
-        device_id: null
+        device: {}
       }
     }
   }

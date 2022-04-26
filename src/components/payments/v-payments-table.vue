@@ -32,7 +32,10 @@
 <script>
 export default {
   name: "v-payments-table",
-  props: ["payments"]
+  props: ["payments"],
+  mounted() {
+    this.$store.dispatch("")
+  }
 }
 </script>
 
